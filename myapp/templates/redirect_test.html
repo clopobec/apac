@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirection Test</title>
+</head>
+<body>
+    <h1>Redirection Successful!</h1>
+    <p>Congratulations, you have been redirected here after signing up.</p>
+
+    {% if user.is_authenticated %}
+        <p>Welcome, {{ user.first_name }}!</p>
+        <a href="{% url 'account_logout' %}">Logout</a>
+    {% else %}
+        <p>You are not logged in.</p>
+        <a href="{% url 'account_login' %}">Login</a>
+    {% endif %}
+</body>
+</html>

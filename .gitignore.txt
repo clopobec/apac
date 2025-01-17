@@ -1,0 +1,62 @@
+# Systèmes d'exploitation
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dépendances des gestionnaires de paquets
+/node_modules
+/.pnp
+.pnp.js
+
+# Répertoires de production ou de construction
+/dist
+/build
+/out
+/.next
+/.nuxt
+/public
+
+# Environnements et fichiers sensibles
+.env
+.env.local
+.env.*.local
+*.secret
+*.key
+
+# IDEs et éditeurs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Types spécifiques de fichiers
+*.tmp
+*.log
+*.lock
+*.bak
+
+# Code compilé
+*.class
+*.dll
+*.exe
+*.o
+*.pyc
+*.pyo
+*.pyd
+
+# Configurations système
+*.iml
+*.config
+*.cfg
+
+# Git spécifiques
+.git/
+*.orig

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier</title>
+    <!-- Inclure les styles CSS pour la fenêtre modale -->
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+ 
+</head>
+<body>
+    <!-- Contenu du calendrier -->
+    <div id="calendar"></div>
+
+    <div id="reservation-template" style="display: none;">
+        <div class="reservation-details">
+            <div class="reservation-title"></div>
+            <div class="reservation-resource"></div>
+            <button class="cancel-btn">Annuler</button>
+        </div>
+    </div>
+
+    <!-- Modale de réservation -->
+    <div id="reservationModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" style="cursor:pointer;">&times;</span>
+            <h2>Programmer une analyse</h2>
+            <form id="reservationForm">
+
+                <button type="button" class="resource-btn" data-resource="Nitrogen Adsorption">Nitrogen Adsorption</button>
+                <button type="button" class="resource-btn" data-resource="Carbon Dioxide Adsorption">Carbon Dioxide Adsorption</button>
+                <button type="button" class="resource-btn" data-resource="Water Sorption">Water Sorption</button>
+
+                <input type="submit" value="Réserver" disabled>
+            </form>
+        </div>
+
+        
+
+    </div>
+
+    <!-- Inclure les fichiers JavaScript de FullCalendar -->
+    <script src="{% static 'fullcalendar/core/index.global.min.js' %}"></script>
+    <script src="{% static 'fullcalendar/daygrid/index.global.min.js' %}"></script>
+    <script src="{% static 'fullcalendar/interaction/index.global.min.js' %}"></script>
+    <!-- Inclure le fichier JavaScript personnalisé -->
+    <script src="{% static 'fullcalendar/calendar.js' %}"></script>
+
+</body>
+</html>

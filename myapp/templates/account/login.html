@@ -1,0 +1,45 @@
+{% extends "account/base_entrance.html" %}
+{% load i18n %}
+{% load allauth i18n static %}
+{% load allauth account %}
+
+{% block head_title %}
+    {% trans "Sign In" %}
+{% endblock head_title %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login_custom.css' %}">
+    
+    <div class="login-container">
+        <div class="login-box">
+            <h1>{% trans "Sign In" %}</h1>
+            
+            <form method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                {% element fields form=form unlabeled=True %}
+                
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+                {% endif %}
+                {% endelement %}
+                
+                <div class="actions">
+                    {% element button type="submit" tags="prominent,login" %}
+                        {% trans "Sign In" %}
+                    {% endelement %}
+                </div>
+            </form>
+            
+            <div class="text-center mt-3">
+                <p>
+                    {% blocktrans %}If you have not created an account yet, then please
+                    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% if SOCIALACCOUNT_ENABLED %}
+        {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+    {% endif %}
+{% endblock content %}

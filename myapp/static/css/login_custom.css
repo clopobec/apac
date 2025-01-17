@@ -1,0 +1,106 @@
+/* login_custom.css */
+body {
+    background-color: #f4f7fc; /* Couleur de fond douce */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Conteneur pour centrer la boîte de connexion, mais avec plus de place vers le haut */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligner vers le haut */
+    height: 90vh; /* Ajuster la hauteur pour laisser un peu d'espace au-dessus */
+    padding: 20px;
+}
+
+/* Boîte de connexion avec un fond blanc, bords arrondis et ombre */
+.login-box {
+    background-color: #ffffff;
+    border-radius: 12px; /* Bords arrondis */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    width: 100%;
+    max-width: 400px; /* Limiter la largeur */
+    padding: 30px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Titre de la boîte de connexion */
+.login-box h1 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* Formulaire avec espacement entre les champs */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacement entre les éléments du formulaire */
+}
+
+/* Styles des champs de formulaire */
+input[type="text"], input[type="password"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Bords arrondis pour les champs */
+    background-color: #f9f9f9; /* Fond clair */
+    box-sizing: border-box;
+    width: 100%;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #007bff; /* Changement de couleur quand on focus */
+    background-color: #e9f5ff; /* Changement de fond en focus */
+    outline: none;
+}
+
+/* Style des boutons */
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Le bouton prend toute la largeur */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Couleur au survol */
+}
+
+/* Lien "sign up" en bas avec un style simple */
+.text-center p {
+    font-size: 14px;
+    color: #666;
+}
+
+.text-center a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.text-center a:hover {
+    text-decoration: underline;
+}
+
+/* Responsiveness : Assurer un bon affichage sur les petits écrans */
+@media (max-width: 500px) {
+    .login-box {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .login-box h1 {
+        font-size: 22px;
+    }
+}

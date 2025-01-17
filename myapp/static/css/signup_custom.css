@@ -1,0 +1,102 @@
+/* signup_custom.css */
+
+/* Styles généraux pour la page */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5; /* Fond clair et agréable */
+    padding: 20px;
+}
+
+/* Centrer le formulaire au milieu de la page */
+form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre de la page */
+h1 {
+    text-align: center;
+    color: #007bff; /* Couleur bleue agréable */
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Champs de formulaire */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+/* Changer la bordure des champs au survol */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Bouton d'inscription */
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Changer la couleur du bouton au survol */
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Liens sous le formulaire */
+p {
+    text-align: center;
+}
+
+p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Styles pour les champs du formulaire */
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+}
+
+/* Ajouter de l'espace entre chaque champ */
+input[type="text"], 
+input[type="email"],
+input[type="password"] {
+    margin-bottom: 15px;
+}
+
+/* Responsivité */
+@media (max-width: 576px) {
+    form {
+        padding: 20px;
+        width: 90%;
+    }
+}

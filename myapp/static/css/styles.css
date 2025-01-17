@@ -1,0 +1,69 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    position:relative,
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+
+.banner {
+    display: flex;
+    align-items: center; /* Aligner les éléments verticalement */
+}
+
+.banner img {
+    margin-right: 20px; /* Ajouter un espace entre l'image et le texte */
+}
+
+/* Optionnel : Styler le texte */
+.banner h1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* Conteneur des boutons */
+.buttons-container {
+    display: flex;
+    flex-direction: column; /* Empiler les boutons verticalement */
+    align-items: center; /* Centrer les boutons horizontalement */
+    margin-top: 20px; /* Ajouter de l'espace entre la bannière et les boutons */
+}
+
+#open-calendar-button,
+.logout-button {
+    display: block;
+    width: 200px; /* Fixer une largeur spécifique pour les boutons */
+    margin: 10px 0; /* Espacement entre les boutons */
+}
+
+.auth-links {
+    text-align: center;
+}
+
+.auth-links a {
+    display: block;
+    margin-bottom: 10px; /* Ajoute un espace de 10px entre chaque lien */
+}
+
