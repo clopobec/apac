@@ -117,3 +117,7 @@ form button[type="submit"]:hover {
     background-color: #218838;
 }
    
+.reservation-title, .reservation-resource {
+    display: block;
+    margin-bottom: 5px; /* Un peu d'espace entre le titre et la ressource */
+}

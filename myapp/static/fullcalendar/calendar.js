@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
     let selectedDate = null; // Variable pour stocker la date sélectionnée
     let isCancelling = false; // Variable pour suivre si une annulation est en cours
 
+    const resourceAbbreviations = {
+        "Nitrogen Adsorption": "N2 Ads.",  // Abréviation pour Nitrogen Adsorption
+        "Carbon Dioxide Adsorption": "CO2 Ads.",  // Abréviation pour Carbon Dioxide Adsorption
+        "Water Sorption": "DVS"  // Pas d'abréviation ici, le nom complet est utilisé
+    };
+
     // Initialisation du calendrier
     const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -49,14 +55,23 @@ document.addEventListener('DOMContentLoaded', function () {
             reservationModal.style.display = 'block';
             resetModalState(); // Réinitialiser l'état de la fenêtre modale
         },
+
+
         eventDidMount: function (info) {
             const template = document.getElementById('reservation-template');
             const clone = template.cloneNode(true); // Clone le modèle
             clone.style.display = ''; // Rendre le modèle visible
-        
+       
             // Ajoutez les données dynamiques
-            clone.querySelector('.reservation-title').textContent = info.event.title;
-            clone.querySelector('.reservation-resource').textContent = info.event.extendedProps.resource;
+            // Récupère le nom abrégé de la ressource
+            const abbreviatedResource = resourceAbbreviations[info.event.extendedProps.resource] || info.event.extendedProps.resource;
+            // Ajoute le nom de l'utilisateur
+            const reservationTitle = clone.querySelector('.reservation-title');
+            reservationTitle.textContent = info.event.title;
+            // Ajoute le nom abrégé de la ressource sous le nom de l'utilisateur
+            const resourceElement = clone.querySelector('.reservation-resource');
+            resourceElement.textContent = abbreviatedResource;
+
         
             // Ajoutez des écouteurs au bouton Annuler
             clone.querySelector('.cancel-btn').addEventListener('click', function () {
@@ -150,7 +165,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert(data.message);
                 calendar.refetchEvents(); // Rafraîchir les événements sur le calendrier
                 reservationModal.style.display = 'none'; // Fermer la fenêtre modale
-                resetModalState(); // Réinitialiser l'état de la fenêtre modale
+                // resetModalState(); // Réinitialiser l'état de la fenêtre modale
+                resetFormState()
             } else {
                 alert('Erreur : ' + data.message);
             }
@@ -167,6 +183,31 @@ document.addEventListener('DOMContentLoaded', function () {
         selectedResource = null; // Réinitialiser la ressource sélectionnée
         toggleSubmitButton(false); // Désactiver le bouton de soumission
     }
+
+
+    function resetFormState() {
+        // Réinitialiser les champs du formulaire (champs généraux et ReservationDetails)
+        document.getElementById('reservationForm').reset();
+    
+        // Cacher les champs dynamiques associés à ReservationDetails
+        const extraFields = document.getElementById("extraFields");
+        extraFields.classList.add("hidden");
+    
+        // Cacher le bouton Annuler
+        const cancelButton = document.querySelector('.cancel-btn');
+        if (cancelButton) {
+            cancelButton.style.display = 'none';
+        }
+    
+        // Désactiver le bouton "Réserver"
+        toggleSubmitButton(false);
+    
+        // Réinitialiser l'état de la ressource et de la date sélectionnées
+        selectedResource = null;
+        selectedDate = null;
+    }
+
+
 
     // Fonction pour activer ou désactiver le bouton de soumission
     function toggleSubmitButton(enable) {

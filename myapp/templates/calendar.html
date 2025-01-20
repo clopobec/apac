@@ -23,6 +23,7 @@
                 <button type="button" class="resource-btn" data-resource="Nitrogen Adsorption">Nitrogen Adsorption</button>
                 <button type="button" class="resource-btn" data-resource="Carbon Dioxide Adsorption">Carbon Dioxide Adsorption</button>
                 <button type="button" class="resource-btn" data-resource="Water Sorption">Water Sorption</button>
+                
 
                 <!-- Champs dynamiques -->
                 <div id="extraFields" class="hidden">
@@ -55,7 +56,20 @@
                 </div>
 
                 
+
+                
             </form>
+        </div>
+    </div>
+
+    <!-- Modèle d'événement pour le calendrier -->
+    <div id="reservation-template" style="display: none;">
+        <div class="reservation-details">
+            <span class="reservation-title"></span>
+            <span class="reservation-resource"></span>
+            <button class="cancel-btn" style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+                Annuler
+            </button>
         </div>
     </div>
 
