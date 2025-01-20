@@ -2,6 +2,7 @@
 from allauth.account.forms import SignupForm
 from django import forms
 from .models import Reservation
+from .models import ReservationDetails
 
 print("CustomSignupForm est chargé")
 
@@ -36,3 +37,7 @@ class ReservationForm(forms.ModelForm):
         }
 
 
+class ReservationDetailsForm(forms.ModelForm):
+    class Meta:
+        model = ReservationDetails
+        fields = ['sample_name', 'materials', 'micro_meso_non_porous', 'estimated_surface_area', 'degassing_temperature']

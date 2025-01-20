@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import ReservationForm
 from django.http import JsonResponse
-from .models import Reservation
+from .models import Reservation, ReservationDetails
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
@@ -25,32 +25,30 @@ def delete_reservation(request, reservation_id):
 # @login_required
 def create_reservation_ajax(request):
     if request.method == 'POST':
-        # Vérifier que l'utilisateur est authentifié
         if not request.user.is_authenticated:
             return JsonResponse({'message': 'Utilisateur non authentifié'}, status=401)
 
         try:
-            data = json.loads(request.body)  # Récupère les données envoyées via AJAX
+            data = json.loads(request.body)
 
-            # On crée un dictionnaire pour remplir le formulaire avec les données reçues
-            form_data = {
-                'resource': data.get('resource'),
-                'date': data.get('date'),
-                'assigned_user': request.user
-            }
+            # Créer la réservation principale
+            reservation = Reservation.objects.create(
+                resource=data.get('resource'),
+                date=data.get('date'),
+                assigned_user=request.user,
+            )
 
-            # Remplir le formulaire avec les données, et associer l'utilisateur connecté
-            form = ReservationForm(form_data)
+            # Créer les détails de réservation
+            ReservationDetails.objects.create(
+                reservation=reservation,
+                sample_name=data.get('sample_name'),
+                materials=data.get('materials'),
+                micro_meso_non_porous=data.get('micro_meso_non_porous'),
+                estimated_surface_area=data.get('estimated_surface_area'),
+                degassing_temperature=data.get('degassing_temperature'),
+            )
 
-            # Validation du formulaire
-            if form.is_valid():
-                reservation = form.save(commit=False)
-                reservation.assigned_user = request.user  # On associe l'utilisateur connecté
-                reservation.save()
-                return JsonResponse({'message': 'Réservation réussie'}, status=200)
-
-            # Si le formulaire n'est pas valide, renvoyer un message d'erreur
-            return JsonResponse({'message': 'Erreur de validation des données'}, status=400)
+            return JsonResponse({'message': 'Réservation réussie'}, status=200)
 
         except Exception as e:
             return JsonResponse({'message': f'Erreur lors de la création de la réservation: {str(e)}'}, status=400)

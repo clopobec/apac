@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const calendarEl = document.getElementById('calendar');
     const reservationModal = document.getElementById('reservationModal');
     const resourceButtons = document.querySelectorAll('.resource-btn');
-    const submitButton = document.querySelector('#reservationForm input[type="submit"]');
+    const submitButton = document.getElementById('reservationSubmit');
     let selectedResource = null; // Variable pour stocker la ressource sélectionnée
     let selectedDate = null; // Variable pour stocker la date sélectionnée
     let isCancelling = false; // Variable pour suivre si une annulation est en cours
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (isCancelling) {
                 isCancelling = false; // Réinitialise l'état après l'annulation
                 return; // Empêche l'ouverture de la fenêtre modale
-    }
+            }
 
             // Vérifier si une journée est déjà réservée
             const events = calendar.getEvents();
@@ -65,14 +65,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Récupérer l'ID avant de retirer l'événement
                     const eventId = info.event.id;
                     console.log("ID de la réservation à annuler:", eventId);  // Log de l'ID avant la suppression
-            
                     // Supprimer l'événement visuellement
                     info.event.remove();
             
                     // Effectuer la requête DELETE en envoyant l'ID
                     fetch(`/delete_reservation/${eventId}/`, { 
                         method: 'DELETE',
-                    
                     })
                         .then(response => response.json())
                         .then(data => alert(data.message))
@@ -80,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
             
-        
             // Ajoutez le modèle cloné à l'élément de l'événement
             info.el.innerHTML = ''; // Nettoyez le contenu existant
             info.el.appendChild(clone);
@@ -96,16 +93,32 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Gestion de la sélection des ressources
-    resourceButtons.forEach(button => {
+    document.querySelectorAll('.resource-btn').forEach(button => {
         button.addEventListener('click', function () {
             // Retirer la classe "selected" de tous les boutons
-            resourceButtons.forEach(btn => btn.classList.remove('selected'));
+            document.querySelectorAll('.resource-btn').forEach(btn => {
+                if (btn) {
+                    btn.classList.remove('selected');
+                } else {
+                    console.error("Bouton non valide détecté !");
+                }
+            });
+    
             // Ajouter la classe "selected" au bouton cliqué
-            button.classList.add('selected');
-            // Mettre à jour la ressource sélectionnée
-            selectedResource = button.getAttribute('data-resource');
+            this.classList.add('selected');
+            selectedResource = this.getAttribute('data-resource');
             console.log("Ressource sélectionnée :", selectedResource);
-            toggleSubmitButton(true); // Activer le bouton de soumission
+    
+            if (selectedDate) {
+                document.getElementById('date').value = selectedDate;
+            }
+    
+            toggleSubmitButton(true);
+            const modalContent = document.getElementById("modalContent");
+            const extraFields = document.getElementById("extraFields");
+    
+            modalContent.classList.add("expanded");
+            extraFields.classList.remove("hidden");
         });
     });
 
@@ -113,16 +126,23 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('reservationForm').addEventListener('submit', function (event) {
         event.preventDefault(); // Empêcher la soumission par défaut du formulaire
 
-               // Envoi de la requête POST pour créer la réservation
+        const data = {
+            resource: document.getElementById('resource').value,
+            date: document.getElementById('date').value,
+            sample_name: document.getElementById('sample_name').value,
+            materials: document.getElementById('materials').value,
+            micro_meso_non_porous: document.getElementById('micro_meso_non_porous').value,
+            estimated_surface_area: parseFloat(document.getElementById('estimated_surface_area').value),
+            degassing_temperature: parseFloat(document.getElementById('degassing_temperature').value),
+        };
+
+        // Envoi de la requête POST pour créer la réservation
         fetch('/create_reservation_ajax/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                resource: selectedResource,
-                date: selectedDate
-            })
+            body: JSON.stringify(data)
         })
         .then(response => response.json())
         .then(data => {
@@ -150,6 +170,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Fonction pour activer ou désactiver le bouton de soumission
     function toggleSubmitButton(enable) {
-        submitButton.disabled = !enable; // Activer ou désactiver le bouton en fonction de l'état
+        const submitButton = document.getElementById('reservationSubmit');
+        if (submitButton) {
+            submitButton.disabled = !enable; // Activer ou désactiver le bouton
+        } else {
+            console.warn("Le bouton de soumission n'est pas disponible dans le DOM.");
+        }
     }
 });
