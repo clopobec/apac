@@ -101,6 +101,8 @@
             // Fermer la modale
             closeModal.addEventListener("click", function () {
                 modal.style.display = "none";
+                resetModalState(); // Réinitialise l'état des ressources
+                resetFormState(); // Réinitialise tout le formulaire
             });
 
             // Fermer la modale si clic en dehors

@@ -95,7 +95,10 @@ document.addEventListener('DOMContentLoaded', function () {
             
             // Ajoutez le modèle cloné à l'élément de l'événement
             info.el.innerHTML = ''; // Nettoyez le contenu existant
-            info.el.appendChild(clone);
+            info.el.appendChild(clone); // Ajoute le modèle cloné
+            
+
+            
         }
     });
 
@@ -178,14 +181,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Fonction pour réinitialiser l'état de la fenêtre modale
-    function resetModalState() {
+    // la déclaration de la variable avec window. permet de la rendre globale (elle est utilisée dans calendar.html)
+    window.resetModalState = function resetModalState() {
         resourceButtons.forEach(button => button.classList.remove('selected')); // Réinitialiser les boutons
         selectedResource = null; // Réinitialiser la ressource sélectionnée
         toggleSubmitButton(false); // Désactiver le bouton de soumission
     }
 
 
-    function resetFormState() {
+    window.resetFormState = function resetFormState() {
         // Réinitialiser les champs du formulaire (champs généraux et ReservationDetails)
         document.getElementById('reservationForm').reset();
     
