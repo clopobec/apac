@@ -1,69 +1,99 @@
-/* styles.css */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    position:relative,
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Empêche un éventuel débordement */
+    z-index: 1;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #c9d7f1, #f9fafc);
+    z-index: -1;
+    top: 0; /* On s'assure que particles.js commence tout en haut de la page */
+    left: 0;
+    /* pointer-events: auto !important; */
 }
-
-.form-control {
-    margin-bottom: 10px;
-}
-
-.btn {
-    background-color: #007bff;
-    color: #fff;
-    padding: 8px 20px;
-    border: none;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color: #0056b3;
-}
-
 
 .banner {
     display: flex;
-    align-items: center; /* Aligner les éléments verticalement */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-.banner img {
-    margin-right: 20px; /* Ajouter un espace entre l'image et le texte */
+.banner img.logo {
+    max-width: 300px;
+    margin-bottom: 10px;
+    display: block; /* Évite les marges invisibles */
+    margin-top: 0;
+    padding-top: 0;
 }
 
-/* Optionnel : Styler le texte */
 .banner h1 {
-    font-size: 40px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+}
+
+.container {
+    padding-top: 0 !important; /* Enlève tout espace au-dessus du contenu */
+}
+
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    z-index: 10;  /* La navbar doit être au-dessus de particles.js */
+}
+
+.navbar .navbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar .nav-item {
+    margin-right: 20px;
+}
+
+.navbar .nav-link,
+.navbar .btn {
+    font-size: 14px;
+    white-space: nowrap;
+    padding: 8px 16px;
+}
+
+.navbar .navbar-brand {
+    font-size: 20px;
     font-weight: bold;
 }
 
-/* Conteneur des boutons */
-.buttons-container {
-    display: flex;
-    flex-direction: column; /* Empiler les boutons verticalement */
-    align-items: center; /* Centrer les boutons horizontalement */
-    margin-top: 20px; /* Ajouter de l'espace entre la bannière et les boutons */
+.navbar .btn {
+    margin-left: 10px;
 }
 
-#open-calendar-button,
-.logout-button {
-    display: block;
-    width: 200px; /* Fixer une largeur spécifique pour les boutons */
-    margin: 10px 0; /* Espacement entre les boutons */
+.navbar-nav .nav-item .nav-link:hover {
+    color: #007bff;
 }
 
-.auth-links {
-    text-align: center;
+.navbar-nav .nav-item .btn:hover {
+    background-color: #0056b3;
 }
 
-.auth-links a {
-    display: block;
-    margin-bottom: 10px; /* Ajoute un espace de 10px entre chaque lien */
+/* Pour que le contenu ne soit pas caché sous la navbar */
+body {
+    padding-top: 80px;
 }
 
+/* Barre de navigation : couleurs et hover */
+.navbar-nav .nav-item .nav-link:hover {
+    color: #007bff; /* Couleur de survol des liens */
+}
+
+.navbar-nav .nav-item .btn:hover {
+    background-color: #0056b3; /* Changer la couleur de fond des boutons au survol */
+}

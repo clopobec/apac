@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,37 +9,83 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <div class="banner">
-        <img src="{% static 'img/logo-uar_02.jpg' %}" alt="Logo">
-        <h1>Bienvenue sur le site de réservation des ressources de l'UAR</h1>
-    </div>
-    {% if user.is_authenticated %}
-    <div class="buttons-container">
-        <button id="open-calendar-button" class="btn btn-primary">Programmer Analyse</button>
-        <a href="{% url 'account_logout' %}" class="btn btn-primary logout-button">Se déconnecter</a>
-    </div>
-    {% else %}
-        <div class="auth-links">
-            <div>
-                <a href="{% url 'account_login' %}">Se connecter</a>
-            </div>
-            <div>
-                <a href="{% url 'account_signup' %}">Créer un compte</a>
+    <!-- Fond avec particles.js -->
+    <div id="particles-js"></div>
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">UAR CHIMIE BALARD</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-us">Qui sommes-nous ?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Nos services d'analyses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacts">Contacts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#news">Actualités</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="btn btn-primary" id="open-calendar-button">Programmer une analyse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-danger" href="{% url 'account_logout' %}">Se déconnecter</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="btn btn-success" href="{% url 'account_login' %}">Se connecter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-info" href="{% url 'account_signup' %}">Créer un compte</a>
+                    </li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
-    {% endif %}
-
-    
+    </nav>
 
 
-<!-- Liens pour se connecter ou créer un compte -->
 
-</div>
+    <!-- Contenu principal -->
+    <div class="container text-center mt-5 pt-5">
+        <div class="banner">
+            <img src="{% static 'img/Logo-PAC_transparent.png' %}" alt="Logo" class="logo">
+            <h1 class="mt-3">Réservation des ressources de l'UAR CHIMIE BALARD</h1>
+        </div>
 
-<script src="{% static 'js/script.js' %}"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Sections avec des liens d'ancrage -->
+        <div id="about-us">
+            <h2>Qui sommes-nous ?</h2>
+            <p>Contenu de cette section...</p>
+        </div>
+        <div id="services">
+            <h2>Nos services d'analyses</h2>
+            <p>Contenu de cette section...</p>
+        </div>
+        <div id="contacts">
+            <h2>Contacts</h2>
+            <p>Contenu de cette section...</p>
+        </div>
+        <div id="news">
+            <h2>Actualités</h2>
+            <p>Contenu de cette section...</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{% static 'js/particles-config.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 
 </body>
 </html>
