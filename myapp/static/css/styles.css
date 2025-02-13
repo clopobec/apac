@@ -1,99 +1,101 @@
+/* General Reset */
 body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Empêche un éventuel débordement */
-    z-index: 1;
+    overflow-x: hidden;
+    padding-top: 3.125rem; /* Utilisation de rem (50px) pour la hauteur de la navbar */
 }
 
+/* Fond de particules */
 #particles-js {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, #c9d7f1, #f9fafc);
-    z-index: -1;
-    top: 0; /* On s'assure que particles.js commence tout en haut de la page */
+    z-index: 0;
+    top: 0;
     left: 0;
-    /* pointer-events: auto !important; */
+    pointer-events: auto;
 }
 
+/* Section Bannière */
 .banner {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 0;
-    padding: 0;
+    position: relative;
+    z-index: 1;
+    background: transparent;
 }
 
+/* Logo de la bannière */
 .banner img.logo {
-    max-width: 300px;
-    margin-bottom: 10px;
-    display: block; /* Évite les marges invisibles */
-    margin-top: 0;
-    padding-top: 0;
+    max-width: 18.75rem; /* 300px en rem */
+    margin-bottom: 0.625rem; /* 10px en rem */
+    display: block;
 }
 
+/* Titre de la bannière */
 .banner h1 {
-    font-size: 32px;
+    font-size: 2rem; /* 32px en rem */
     font-weight: bold;
     color: #333;
 }
 
+/* Container pour les autres sections */
 .container {
-    padding-top: 0 !important; /* Enlève tout espace au-dessus du contenu */
+    position: relative;
+    z-index: 3;
+    background: transparent;
 }
 
+/* Navbar */
 .navbar {
     background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px 20px;
-    z-index: 10;  /* La navbar doit être au-dessus de particles.js */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* 4px 8px en rem */
+    padding: 0.625rem 1.25rem; /* 10px 20px en rem */
+    z-index: 2;
+    position: relative;
+    background: transparent;
 }
 
+/* Espacement des boutons de la navbar */
 .navbar .navbar-nav {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    gap: 1.25rem; /* 20px en rem */
+    margin-left: auto;
+    margin-right: 12.5vw; /* Utilisation de vw pour ajuster l'espace à droite */
 }
 
+/* Espacement entre chaque bouton */
 .navbar .nav-item {
-    margin-right: 20px;
+    margin-right: 1em; /* Utilisation de em pour un espacement relatif */
 }
 
+/* Navbar - Liens et boutons */
 .navbar .nav-link,
 .navbar .btn {
-    font-size: 14px;
-    white-space: nowrap;
-    padding: 8px 16px;
+    font-size: 0.875rem; /* 14px en rem */
+    padding: 0.5em 1.25em; /* Réduit un peu l'espace vertical */
+    white-space: nowrap; /* Empêche le texte de se couper sur plusieurs lignes */
+    overflow: hidden; /* Évite le débordement si le texte est trop long */
+    text-overflow: ellipsis; /* Ajoute des "..." si le texte déborde */
+    display: flex; /* Utilise flexbox pour aligner le texte */
+    justify-content: center; /* Centre le texte horizontalement */
+    align-items: center; /* Centre le texte verticalement */
 }
 
-.navbar .navbar-brand {
-    font-size: 20px;
-    font-weight: bold;
+/* Sections supplémentaires avec transparence */
+#about-us, #services, #contacts, #news {
+    background: transparent;
+    padding: 3.75rem 1.25rem; /* 60px 20px en rem */
+    color: #333;
+    z-index: 2;
 }
 
-.navbar .btn {
-    margin-left: 10px;
-}
-
-.navbar-nav .nav-item .nav-link:hover {
-    color: #007bff;
-}
-
-.navbar-nav .nav-item .btn:hover {
-    background-color: #0056b3;
-}
-
-/* Pour que le contenu ne soit pas caché sous la navbar */
-body {
-    padding-top: 80px;
-}
-
-/* Barre de navigation : couleurs et hover */
-.navbar-nav .nav-item .nav-link:hover {
-    color: #007bff; /* Couleur de survol des liens */
-}
-
-.navbar-nav .nav-item .btn:hover {
-    background-color: #0056b3; /* Changer la couleur de fond des boutons au survol */
+/* Séparation entre les sections */
+#about-us, #services, #contacts, #news {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
