@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Page d'accueil{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <!-- Import des styles CSS spécifiques -->
+     <link rel="stylesheet" href="{% static 'css/base/base.css' %}">
+     <link rel="stylesheet" href="{% static 'css/base/particles.css' %}">
+     <link rel="stylesheet" href="{% static 'css/base/banner.css' %}">
+     <link rel="stylesheet" href="{% static 'css/base/navbar.css' %}">
+     <link rel="stylesheet" href="{% static 'css/base/sections.css' %}">
+</head>
+<body>
+    <!-- Fond avec particles.js -->
+    <div id="particles-js"></div>
+
+    <!-- Navbar -->
+    {% include 'partials/navbar.html' %}
+
+    <!-- Contenu principal -->
+    <div class="container text-center mt-5 pt-5">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    {% include 'partials/footer.html' %}
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{% static 'js/particles-config.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

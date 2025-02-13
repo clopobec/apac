@@ -1,0 +1,12 @@
+/* Sections supplémentaires avec transparence */
+#about-us, #services, #contacts, #news {
+    background: transparent;
+    padding: 3.75rem 1.25rem; /* 60px 20px en rem */
+    color: #333;
+    z-index: 2;
+}
+
+/* Séparation entre les sections */
+#about-us, #services, #contacts, #news {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
