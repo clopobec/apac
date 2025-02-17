@@ -99,3 +99,25 @@ body {
 #about-us, #services, #contacts, #news {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+
+/* Conteneur des icônes */
+.about-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+/* Taille et style des icônes */
+.about-icon img {
+    width: 200x;
+    height: auto;
+    opacity: 0.8;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Effet au survol */
+.about-icon img:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}

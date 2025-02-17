@@ -1,6 +1,47 @@
 {% load static %}
 <section id="about-us">
     <h2>Qui sommes-nous ?</h2>
-    <p>Notre mission est de fournir des analyses de qualité pour...</p>
-    <img src="{% static 'img/about-us.jpg' %}" alt="Notre équipe">
+    
+    <div class="about-content">
+        <p class="intro">
+            Cette création fait suite à une demande forte émanant de la <strong>région Occitanie</strong> ainsi que d’une volonté des différentes tutelles 
+            (<strong>Université de Montpellier, CNRS, ENSCM</strong>) de mutualiser les moyens d’analyses et de caractérisations et les compétences associées.
+        </p>
+
+        <div class="about-box">
+            <div class="about-icon">
+                <img src="{% static 'img/icons/merge.png' %}" alt="Fusion des structures">
+            </div>
+            <h3>Une fusion stratégique</h3>
+            <p>Après validation en <strong>2023</strong>, l’UAR PAC Chimie Balard Montpellier est née de la fusion des structures suivantes :</p>
+            <ul class="about-list">
+                <li><strong>Laboratoire de Mesures Physiques (LMP)</strong></li>
+                <li><strong>Plateau Technique Institut Charles Gerhardt de Montpellier (PT ICGM)</strong></li>
+                <li><strong>Réseau des Rayons X et Gamma (RRXG)</strong></li>
+                <li><strong>Microscopie Électronique et Analytique (MEA)</strong></li>
+            </ul>
+        </div>
+
+        <div class="about-box">
+            <div class="about-icon">
+                <img src="{% static 'img/icons/inventor.png' %}" alt="Expertise">
+            </div>
+            <h3>Une expertise de pointe</h3>
+            <p>La <strong>PAC Chimie Balard</strong> regroupe <strong>11 services spécialisés</strong> et plus de <strong>50 équipements</strong>, pour une valeur totale d’environ <strong>15 millions d’euros</strong>.</p>
+        </div>
+
+        <div class="about-box">
+            <div class="about-icon">
+                <img src="{% static 'img/icons/equipment.png' %}" alt="Ouverture">
+            </div>
+            <h3>Un service ouvert à tous</h3>
+            <p>Ce vaste ensemble est accessible à la communauté <strong>académique et industrielle</strong>. Il répond aux besoins analytiques dans les domaines :</p>
+            <ul class="about-list">
+                <li>Chimie et interfaces <strong>biologie-santé</strong></li>
+                <li><strong>Agronomie-écologie</strong></li>
+                <li><strong>Matériaux-environnement</strong></li>
+            </ul>
+        </div>
+    </div>
 </section>
+
