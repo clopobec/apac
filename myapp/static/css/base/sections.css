@@ -162,3 +162,52 @@
 }
 
 
+.services-container {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f8f8f8;
+}
+
+.hex-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.hexagon-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.hexagon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #47b288;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 1rem;
+    width: 13rem;
+    height: 13rem;
+    text-decoration: none; /* Enlever le soulignement des liens */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+
+.hexagon:hover {
+    background-color: #3a9273; /* Couleur plus foncée au survol */
+    transform: scale(1.1); /* Animation zoom */
+}
+
+.hexagon span {
+    display: block;
+    max-width: 80%;
+    word-wrap: break-word;
+    font-size: 1.1rem;
+}
