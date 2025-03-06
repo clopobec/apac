@@ -1,14 +1,19 @@
 from django.shortcuts import render, redirect
 from .forms import ReservationForm
+from .forms import ContactForm
 from django.http import JsonResponse
 from .models import Reservation, ReservationDetails
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 import json
+from django.core.mail import send_mail
+from django.contrib import messages
+
 
 def index(request):
     return render(request, 'index.html')
+
 
 @login_required
 @csrf_exempt
@@ -76,3 +81,31 @@ def get_reservations(request):
         })
 
     return JsonResponse(events, safe=False)
+
+
+def contact_view(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Traitement du formulaire
+            name = form.cleaned_data["name"]
+            email = form.cleaned_data["email"]
+            message = form.cleaned_data["message"]
+            
+            # Envoi de l'email
+            send_mail(
+                subject=f"Nouveau message de {name}",
+                message=message,
+                from_email=email,
+                recipient_list=["nicolas.donzel@umontpellier.fr"],
+            )
+            messages.success(request, "Votre message a bien été envoyé !")
+            return redirect("contact")  # Recharge la page avec le message
+    else:
+        form = ContactForm()
+
+    return render(request, "sections/contact.html", {"form": form})
+
+
+
+

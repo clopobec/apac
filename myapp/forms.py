@@ -3,6 +3,8 @@ from allauth.account.forms import SignupForm
 from django import forms
 from .models import Reservation
 from .models import ReservationDetails
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 
 print("CustomSignupForm est chargé")
 
@@ -41,3 +43,17 @@ class ReservationDetailsForm(forms.ModelForm):
     class Meta:
         model = ReservationDetails
         fields = ['sample_name', 'materials', 'micro_meso_non_porous', 'estimated_surface_area', 'degassing_temperature']
+
+
+# Formulaire associée à la Section "contactez-nous" du site
+class ContactForm(forms.Form):
+    name = forms.CharField(label="Nom", max_length=100, widget=forms.TextInput(attrs={"class": "form-control"}))
+    email = forms.EmailField(label="Email", widget=forms.EmailInput(attrs={"class": "form-control"}))
+    message = forms.CharField(label="Message", widget=forms.Textarea(attrs={"class": "form-control", "rows": 5}))
+
+    # Optionnel: pour personnaliser la manière dont le formulaire est rendu
+    def __init__(self, *args, **kwargs):
+        super(ContactForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'POST'
+        self.helper.add_input(Submit('submit', 'Envoyer', css_class='btn btn-primary'))

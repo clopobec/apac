@@ -211,3 +211,54 @@
     word-wrap: break-word;
     font-size: 1.1rem;
 }
+
+
+
+#contact {
+    background-color: #f8f9fa;  /* Fond gris clair */
+    padding: 60px 0;
+    position: relative;
+    z-index: 10;  /* Met le formulaire au-dessus de particles.js */
+}
+
+#particles-js {
+    position: absolute;  /* Assure-toi qu'il soit sous le formulaire */
+    z-index: -1;  /* Baisse le z-index pour que particles.js soit derrière */
+}
+
+.card {
+    border-radius: 10px;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+
+/* Ajoute une bordure colorée aux champs pour voir l'effet */
+.form-control {
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Changeons le bouton pour mieux le voir */
+.btn-primary {
+    background-color: #28a745; /* Vert au lieu de bleu */
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+/* Ajoutons un effet hover sur le bouton */
+.btn-primary:hover {
+    background-color: #218838;
+}

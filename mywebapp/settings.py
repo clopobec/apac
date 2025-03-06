@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'crispy_forms',        #
+    'crispy_bootstrap4',   #  support Bootstrap 4
 ]
 
 
@@ -156,3 +158,14 @@ SITE_ID = 1  # Obligatoire pour Django Allauth
 
 LOGIN_REDIRECT_URL = '/'  # URL de redirection après connexion
 LOGOUT_REDIRECT_URL = '/'  # URL de redirection après déconnexion
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.umontpellier.fr" 
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = "nicolas.donzel@umontpellier.fr"
+EMAIL_HOST_PASSWORD = "!R2D26pO193534$"
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Adresse par défaut pour l'expéditeur
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
